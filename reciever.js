@@ -4,6 +4,11 @@ var Sound = require('node-mpg123');
 
 var fami = new Sound('famima.mp3');
 var playing=false;
+fami.on("complete",function(){
+    playing = false;
+ });
+
+
 var min = 0, max = -100;
 Bleacon.startScanning();
 
@@ -28,11 +33,6 @@ Bleacon.on('discover', function(bleacon) {
     //process.exit();
       playing = true;
       fami.play();
- 
  } 
-
- fami.on("complete",function(){
-    playing = false;
- });
 
 });
